@@ -1,70 +1,60 @@
 <html>
-    <head>
-            <script src="jquery-3.2.1.min.js"></script>
-            <script src="javascript.js"></script>
-            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-            <style>
-                #dataLogo img {
-                    width: 100px;
-                    height: 100px;
-                }
-            </style>
-        </head>
 
-    <body>
-<div class = "container">
+<head>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="javascript.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <style>
+        #dataTable img {
+            width: 50px;
+            height: 50px;
+        }
+        #dataTable {
+            border: solid 1p #efefef;
+            padding: 5px;
+        }
+        #dataTable td {
+            padding: 5px
+        }
+        #dataTable tr {
+            border-bottom: solid 1px #efefef;
+        }
 
-<div class = "text-center">
-    <h1>Twitch Tv</h1>
-    <h3>A Fcc Project By: Stivi Ndoni</h3>
-    <h4 id = "fccStatus"></h4>
-</div>
+        body {
+            background-color: #E2BBF8;
+        }
+    </style>
+</head>
 
-<!--Buttons-->
-<div class = "row text-center">
-    <div class = "col-md-4"><button class="btn btn-default btn-primary text-center btn-lg" id = "allChannels">All</button></div>
-    <div class = "col-md-4"><button class="btn btn-default btn-success text-center btn-lg" id = "onlineUsers">Online</button></div>
-    <div class = "col-md-4"><button class="btn btn-default btn-danger text-center btn-lg" id = "offlineUsers">Offline</button></div>
+<body>
+    <div class="container">
 
-</div>
+        <div class="text-center">
+            <h1>Twitch Tv</h1>
+            <h3>A Fcc Project By: Stivi Ndoni</h3>
+            <h4 id="fccStatus"></h4>
+        </div>
 
-<!--data area-->
-<div class = "row text-center">
-    <!-- <div class = "col-xs-4" id = "dataLogo">
+        <!--Buttons-->
+        <div class="row text-center">
+            <div class="col-md-4"><button class="btn btn-default btn-primary text-center btn-lg" id="allChannels">All</button></div>
+            <div class="col-md-4"><button class="btn btn-default btn-success text-center btn-lg" id="onlineUsers">Online</button></div>
+            <div class="col-md-4"><button class="btn btn-default btn-danger text-center btn-lg" id="offlineUsers">Offline</button></div>
+
+        </div>
+
+        <!--data area-->
+        <div class="row text-center">
+            <!-- <div class = "col-xs-4" id = "dataLogo">
         <img id = "dataLogo" class = "img-responsive center-block channel-logo" src = "">
     </div>
     <div class = "col-xs-4 channel-info" id = "dataChannel">Channel</div>
     <div class = "col-xs-4 channel-status" id = "dataStatus">Status</div> -->
-    <table id="dataTable">
-        <tr>
-            <td id="dataLogo">
-                
-            </td>
-            <td id="dataChannel">
-                
-            </td>
-            <td id="dataStatus">
-                
-            </td>
-        </tr>
-    </table>
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-    </body>
+            <table style="width: 100%" id="dataTable"></table>
+        </div>
+    </div>
+</body>
 
 
 
@@ -78,4 +68,4 @@
 
 
 
-    </html>
+</html>
