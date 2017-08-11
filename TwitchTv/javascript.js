@@ -19,11 +19,13 @@ $(document).ready(function(){
 
         $("#allChannels").click(function(){
             for (var i = 0; i < twitchChannels.length; i++){
+                //$("#dataTable").append("<tr id='data-" + i + "'></tr>")
+                var rowEl = $("<tr></tr>")
                 
                 $.getJSON(api1 + twitchChannels[i], function(data1){
-                    
-                    
-                    $("#dataLogo").append("<img src=" + data1.logo + ">")    
+                    var logoTd = $("<td><img src=" + data1.logo + "></td>")
+                    rowEl.append(logoTd)
+                    //$("#data-" + i).append("<td><img src=" + data1.logo + "/></td>")    
 
                     //$("#dataLogo").html('');
                 });//logo json
@@ -42,7 +44,7 @@ $(document).ready(function(){
 
                     
                     
-                    if(data3.status==null){
+                    if(data3.stream === null){
                         $("#dataStatus").append("<p>OFFLINE</p>")
                     } else {
                         $("#dataStatus").append("<p>ONLINE</p>")
@@ -50,10 +52,8 @@ $(document).ready(function(){
 
                     //$("#dataStatus").html('');
                 });//status end
+                $("#dataTable").append(rowEl);
             };
-        
-        
-        
         });//all click function
 
    
