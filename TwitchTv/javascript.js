@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 
     $.getJSON(api0, function (data0) {
-        if (data0.status == null) {
+        if (data0.stream === null) {
             $("#fccStatus").html("<p>FreeCodeCamp is OFFLINE</p>");
         } else {
             $("#fccStatus").html("<a href = " + "https://www.twitch.tv/freecodecamp" + ">" + "<p>FreeCodeCamp is ONLINE</p></a>")
