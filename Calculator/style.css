@@ -1,0 +1,44 @@
+.calcBody {
+    border: 1px solid black;
+    width: 230px;
+    height: 400px;
+    background-color: grey;
+}
+
+.buttonBody {
+    border: 1px solid black;
+    width: 50px;
+    height: 50px; 
+    background-color: #F9EE4F;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left:  450px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top:  100px;
+}
+
+table {
+    width: 100%;
+}
+
+.buttonEqual {
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+}
+
+.buttonAC {
+    border: 1px solid black;
+    width: 200px;
+    height: 50px;
+}
+
+.screenBody {
+    border: 1px solid black;
+    width: 200px;
+    height: 100px;
+    background-color: white;
+}

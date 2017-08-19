@@ -2,7 +2,6 @@ $(document).ready(function () {
   var long
   var lat
 
-
   if (navigator.geolocation) { // get current position
     navigator.geolocation.getCurrentPosition(function (position) {
       long = position.coords.longitude
@@ -20,7 +19,6 @@ $(document).ready(function () {
         $('#weather').html(weatherType)
         // $("#weather").html("<img src =" + icon + ">")
         $('#temp').html(cTemp + '&#8451')
-
 
         $('#windspeed').html(windSpeed + 'mph')
 
@@ -44,12 +42,7 @@ $(document).ready(function () {
         }
       }) // json end
 
-
-
     }) // navigator end
   } // if end
-
-
-
 
 }) // ready function end
