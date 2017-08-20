@@ -1,7 +1,8 @@
 <html>
 
 <head>
-    <script src="javascript.js"></script>
+        <script src="jquery-3.2.1.min.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Calculator</title>
@@ -11,44 +12,49 @@
     <div class="container">
 
         <div class="calcBody btn">
-            <div>
-                <table>
-                    <tr>
-                        <td class ="screenBody text-right btn" id = "screen"></td>
-                    </tr>
-                    <tr>
-                        <td class="buttonAC text-center btn btn-danger" id="ac">AC</td>
-                    </tr>
-                    <tr>
-                        <td class="buttonBody text-center btn" id="1">1</td>
-                        <td class="buttonBody text-center btn" id="2">2</td>
-                        <td class="buttonBody text-center btn" id="3">3</td>
-                        <td class="buttonBody text-center btn" id="plus">+</td>
-                    </tr>
-                    <tr>
-                        <td class="buttonBody text-center btn" id="4">4</td>
-                        <td class="buttonBody text-center btn" id="5">5</td>
-                        <td class="buttonBody text-center btn" id="6">6</td>
-                        <td class="buttonBody text-center btn" id="minus">-</td>
-                    </tr>
-                    <tr>
-                        <td class="buttonBody text-center btn" id="7">7</td>
-                        <td class="buttonBody text-center btn" id="8">8</td>
-                        <td class="buttonBody text-center btn" id="9">9</td>
-                        <td class="buttonBody text-center btn" id="mult">*</td>
-                    </tr>
+            <form>
+                <div>
+                    <table id = "calculator">
+                        <tr>
+                            <td class="screenBody text-right btn" id="screen"></td>
+                        </tr>
+                        <tr>
+                            <td class="buttonAC text-center btn btn-danger" id="ac">AC</td>
+                        </tr>
+                        <tr>
+                            <td type="button" class="buttonBody text-center btn" id="1">1</td>
+                            <td type="button" class="buttonBody text-center btn" id="2">2</td>
+                            <td type="button" class="buttonBody text-center btn" id="3">3</td>
+                            <td type="button" class="buttonOperator text-center btn" id="plus">+</td>
+                        </tr>
+                        <tr>
+                            <td type="button" class="buttonBody text-center btn" id="4">4</td>
+                            <td type="button" class="buttonBody text-center btn" id="5">5</td>
+                            <td type="button" class="buttonBody text-center btn" id="6">6</td>
+                            <td type="button" class="buttonOperator text-center btn" id="minus">-</td>
+                        </tr>
+                        <tr>
+                            <td type="button" class="buttonBody text-center btn" id="7">7</td>
+                            <td type="button" class="buttonBody text-center btn" id="8">8</td>
+                            <td type="button" class="buttonBody text-center btn" id="9">9</td>
+                            <td type="button" class="buttonOperator text-center btn" id="mult">*</td>
+                        </tr>
 
-                    <tr>
-                        <td class="buttonBody text-center btn" id="0">0</td>
-                        <td class="buttonEqual text-center btn btn-success" id="equal">=</td>
-                        <td class="buttonBody text-center btn" id="divide">/</td>
-                    </tr>
-                </table>
-            </div>
+                        <tr>
+                            <td type="button" class="buttonBody text-center btn" id="0">0</td>
+                            <td type="button" class="buttonBody text-center btn" id=".">.</td>
+                            <td type="button" class="buttonEqual text-center btn btn-success" id="equal">=</td>
+                            <td type="button" class="buttonOperator text-center btn" id="divide">/</td>
+
+                        </tr>
+                    </table>
+                </div>
+            </form>
         </div>
 
     </div>
-
+    <script src="javascript.js"></script>
+    
 </body>
 
 </html>
