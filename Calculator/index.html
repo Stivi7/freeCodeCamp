@@ -1,50 +1,53 @@
 <html>
 
 <head>
-        <script src="jquery-3.2.1.min.js"></script>
-    
+    <script src="jquery-3.2.1.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Calculator</title>
 </head>
 
 <body>
+    <h1 class="text-center"> Calculator </h1>
+    <h4 class="text-center"> A Fcc Project by: Stivi Ndoni </h4>
     <div class="container">
 
         <div class="calcBody btn">
             <form>
                 <div>
-                    <table id = "calculator">
+                    <table id="calculator">
                         <tr>
                             <td class="screenBody text-right btn" id="screen"></td>
                         </tr>
                         <tr>
                             <td class="buttonAC text-center btn btn-danger" id="ac">AC</td>
+                            <td class="buttonAC text-center btn btn-danger" id="ce">CE</td>
                         </tr>
                         <tr>
                             <td type="button" class="buttonBody text-center btn" id="1">1</td>
                             <td type="button" class="buttonBody text-center btn" id="2">2</td>
                             <td type="button" class="buttonBody text-center btn" id="3">3</td>
-                            <td type="button" class="buttonOperator text-center btn" id="plus">+</td>
+                            <td type="button" class="buttonBody text-center btn" id="+">+</td>
                         </tr>
                         <tr>
                             <td type="button" class="buttonBody text-center btn" id="4">4</td>
                             <td type="button" class="buttonBody text-center btn" id="5">5</td>
                             <td type="button" class="buttonBody text-center btn" id="6">6</td>
-                            <td type="button" class="buttonOperator text-center btn" id="minus">-</td>
+                            <td type="button" class="buttonBody text-center btn" id="-">-</td>
                         </tr>
                         <tr>
                             <td type="button" class="buttonBody text-center btn" id="7">7</td>
                             <td type="button" class="buttonBody text-center btn" id="8">8</td>
                             <td type="button" class="buttonBody text-center btn" id="9">9</td>
-                            <td type="button" class="buttonOperator text-center btn" id="mult">*</td>
+                            <td type="button" class="buttonBody text-center btn" id="*">*</td>
                         </tr>
 
                         <tr>
                             <td type="button" class="buttonBody text-center btn" id="0">0</td>
-                            <td type="button" class="buttonBody text-center btn" id=".">.</td>
+                            <td type="button" class="buttonDot text-center btn" id=".">.</td>
                             <td type="button" class="buttonEqual text-center btn btn-success" id="equal">=</td>
-                            <td type="button" class="buttonOperator text-center btn" id="divide">/</td>
+                            <td type="button" class="buttonBody text-center btn" id="/">/</td>
 
                         </tr>
                     </table>
@@ -54,7 +57,7 @@
 
     </div>
     <script src="javascript.js"></script>
-    
+
 </body>
 
 </html>
