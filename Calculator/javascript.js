@@ -15,12 +15,11 @@ $('document').ready(function () {
     current = '0'
     $('#screen').html('0')
   })
-  
+
   $('.buttonBody').click(function (e) { // adds digits to the screen
-    
+
     if (current == 0 && current.indexOf('.') == -1) {
       current = e.target.id
-      
     } else {
       current = current + e.target.id
     }
@@ -42,14 +41,13 @@ $('document').ready(function () {
     $('#screen').html(current)
   })
 
-  
+
 
   $('.buttonEqual').click(function () {
-    
     $('#screen').html(eval(current))
     operation = 0 // clear operation
-    memory = "0" // clear memory
-    
-    
+    memory = '0' // clear memory
+
+
   })
 })
