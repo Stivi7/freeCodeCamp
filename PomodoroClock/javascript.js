@@ -1,7 +1,7 @@
 $('document').ready(function () {
   var output = $('#output')
 
-  var DEF_MIN = 1, DEF_SEC = 3, BREAK_MIN = 1, BREAK_SEC = 4 // default given data
+  var DEF_MIN = 25, DEF_SEC = 60, BREAK_MIN = 5, BREAK_SEC = 60 // default given data
 
   var min = DEF_MIN, sec = DEF_SEC, minBreak = BREAK_MIN, secBreak = BREAK_SEC
 
@@ -36,8 +36,10 @@ $('document').ready(function () {
   })
 
   $('#start').click(function () {
-    
-    function sI () { // function that generates seconds with setInterval
+    /**
+     * generate seconds
+     */
+    function sI () { 
       si = setInterval(function () {
         sec -= 1
         console.log("Seconds Interval")
@@ -49,8 +51,10 @@ $('document').ready(function () {
         display()
       }, 1000)
     }
-
-    function mI () {
+    /**
+     * generate minutes
+     */
+    function mI () { 
         $("#timeState").html('SESSION TIME ...');
       mi = setInterval(function () {
         min -= 1
@@ -64,7 +68,9 @@ $('document').ready(function () {
         }
       }, 1000 * DEF_SEC)
     }
-
+    /**
+     * generate break minutes
+     */
     function bmI () {
         $("#timeState").html('BREAK TIME ...');
       bmi = setInterval(function () {
@@ -81,17 +87,19 @@ $('document').ready(function () {
         
       }, 1000 * BREAK_SEC)
     }
-
+    /**
+     * generate break seconds
+     */
     function bsI() {
         bsi = setInterval(function() {
             secBreak -= 1
-            console.log("Break Seconds Interval")
+            //console.log("Break Seconds Interval")
             if (secBreak == 0) {
                 clearInterval(bsi)
                 secBreak = BREAK_SEC
                 bsI();
             }
-            console.log(secBreak)
+            //console.log(secBreak)
             displayBreak();
         }, 1000)
     }
@@ -120,5 +128,12 @@ $('document').ready(function () {
 
     sI()
     mI()
+  })
+
+  $("#reset").click(function(){
+    function re(){
+      location.reload();
+    }
+    re();
   })
 })
