@@ -1,15 +1,24 @@
 $('document').ready(function () {
+
   var output = $('#output')
+  var startBtn = $('#start');
 
-  var DEF_MIN = 25, DEF_SEC = 60, BREAK_MIN = 5, BREAK_SEC = 60 // default given data
+  var DEF_MIN = 25, BREAK_MIN = 5;
+  var TOTAL_SECONDS = 60;
+  var min = DEF_MIN, minBreak = BREAK_MIN, seconds = 0;
 
-  var min = DEF_MIN, sec = DEF_SEC, minBreak = BREAK_MIN, secBreak = BREAK_SEC
+  var sessionIn, breakIn, isStarted;
+  
+  // State used for global actions like pause/start
+  var globalState = "time";
 
-  var mi, si, bmi, bsi; // minute interval, seconds interval, break min interval, break sec interval
-
-  $("#timeState").html('TO BE STARTED')
+  $("#timeState").html('TO BE STARTED ...')
   $('#sessionTime').html(DEF_MIN)
   $('#breakTime').html(BREAK_MIN)
+
+  /**
+   * Actions
+   */
 
   $('#minusTime').click(function () {
     DEF_MIN--;
@@ -34,106 +43,91 @@ $('document').ready(function () {
     minBreak = BREAK_MIN;
     $("#breakTime").html(BREAK_MIN);
   })
-
-  $('#start').click(function () {
-    /**
-     * generate seconds
-     */
-    function sI () { 
-      si = setInterval(function () {
-        sec -= 1
-        console.log("Seconds Interval")
-        if (sec == 0) {
-          clearInterval(si)
-          sec = DEF_SEC
-          sI()
-        }
-        display()
-      }, 1000)
-    }
-    /**
-     * generate minutes
-     */
-    function mI () { 
-        $("#timeState").html('SESSION TIME ...');
-      mi = setInterval(function () {
-        min -= 1
-        console.log("Minutes Interval")
-        if (min == 0) {
-          clearInterval(mi)
-          clearInterval(si)
-          min = DEF_MIN
-          bsI();
-          bmI();
-        }
-      }, 1000 * DEF_SEC)
-    }
-    /**
-     * generate break minutes
-     */
-    function bmI () {
-        $("#timeState").html('BREAK TIME ...');
-      bmi = setInterval(function () {
-        minBreak -= 1
-        console.log("Break MInutes Interval")
-        if (minBreak == 0) {
-          minBreak = BREAK_MIN;
-          secBreak = BREAK_SEC
-          clearInterval(bsi);
-          clearInterval(bmi);
-          sI();
-          mI();
-        }
-        
-      }, 1000 * BREAK_SEC)
-    }
-    /**
-     * generate break seconds
-     */
-    function bsI() {
-        bsi = setInterval(function() {
-            secBreak -= 1
-            //console.log("Break Seconds Interval")
-            if (secBreak == 0) {
-                clearInterval(bsi)
-                secBreak = BREAK_SEC
-                bsI();
-            }
-            //console.log(secBreak)
-            displayBreak();
-        }, 1000)
-    }
-
-    function display () {
-        displaySec = sec;
-        displayMin = min;
-        if (sec == 60) {
-            displaySec = "00"
+  
+  /**
+   * Start a timer for given state and seconds
+   * @param {*} state 
+   */
+  function timer(state) {
+    return setInterval(function() {
+      seconds--;
+      display(seconds, state);
+      if (seconds == 0) {
+        if (state == "time") {
+          clearInterval(sessionIn);
+          globalState = "break";
+          startTimer("break");
         } else {
-            displayMin--;
+          clearInterval(breakIn);
+          globalState = "time";
+          startTimer("time");
         }
-        output.html(displayMin + ':' + displaySec)
-    }
+      }  
+    }, 1000)
+  }
 
-    function displayBreak () {
-        displaySec = secBreak;
-        displayMin = minBreak;
-        if (secBreak == 60) {
-            displaySec = "00"
-        } else {
-            displayMin--;
-        }
-        output.html(displayMin + ':' + displaySec)
+  /**
+   * Start the timer depending on state
+   * @param {*} state 
+   */
+  function startTimer(state, pausedSec) {
+    if (state == "time") {
+      seconds = pausedSec ? pausedSec : min * TOTAL_SECONDS;
+      sessionIn = timer(state);
+    } else {
+      seconds = pausedSec ? pausedSec : minBreak * TOTAL_SECONDS;
+      breakIn = timer(state);
     }
+  }
+  
+  /**
+   * Display timer to the dom
+   * @param {*} sec 
+   * @param {*} state 
+   */
+  function display(sec, state) {
+    if (state == 'time') {
+      $("#timeState").html('SESSION TIME ...');
+    } else if (state == 'break') {
+      $("#timeState").html('BREAK TIME ...');
+    } else {
+      $("#timeState").html("TO BE STARTED ...")
+    }
+    
+    var m = Math.floor(sec / TOTAL_SECONDS);
+    var s = sec % TOTAL_SECONDS;
+    output.html(m + ':' + s);
+  }
 
-    sI()
-    mI()
-  })
+  /**
+   * Run Timer
+   */
+  function run() {
+    isStarted = startBtn.html() == 'Start';
+    isStarted ? startBtn.html('Pause') : startBtn.html('Start');
+    
+    // If is paused clear both intervals otherwise startTimer using the global state
+    if (!isStarted) {
+      clearInterval(sessionIn);
+      clearInterval(breakIn);
+    } else {
+      startTimer(globalState, seconds > 0 ? seconds : null);
+    }
+  }
+
+  startBtn.click(run)
 
   $("#reset").click(function(){
-    function re(){
-      location.reload();
-    }
-    re();
+    min = DEF_MIN;
+    var sec = min * TOTAL_SECONDS;
+    seconds = 0;
+    clearInterval(sessionIn);
+    clearInterval(breakIn);
+    globalState = "time";
+    startBtn.html("Start");
+    display(sec, "to be started")
   })
+
+
+
 })
