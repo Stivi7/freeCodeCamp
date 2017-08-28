@@ -1,0 +1,17 @@
+.boardBox {
+    width: 80px;
+    height: 80px;
+    border: 1px solid black;
+}
+
+.wraper {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 550px;
+    margin-left: 550px;
+    margin-top: 200px;
+}
+
+#gameBoard {
+    padding-right: 300px;
+}

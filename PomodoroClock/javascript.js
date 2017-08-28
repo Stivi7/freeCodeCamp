@@ -1,6 +1,6 @@
 $('document').ready(function () {
 
-  var output = $('#output')
+  var output = $('#output');
   var startBtn = $('#start');
 
   var DEF_MIN = 25, BREAK_MIN = 5;
