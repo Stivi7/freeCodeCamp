@@ -51,25 +51,45 @@ $(document).ready(function () {
       board.splice(i, 1, humanPlayer)
       newBoard = board
     }
-    computerTurn()
-  // console.log(newBoard)
+    computerTurn();
+    endGame();
+   console.log(newBoard)
   }
 
-  
+  /**
+   * Defining a random computer move
+   * @param {*} e 
+   */
 
   function computerTurn (e) {
-    // var i = Number(e.target.id)
-    var random = newBoard[Math.floor(Math.random() * newBoard.length)]
+    //var j = Number(e.target.id)
+    
     if (humanTurn) {
       for (var j = 0; j < newBoard.length; j++) {
-        if (newBoard[j] != humanPlayer && newBoard.indexOf(random) !== -1) {
-          newBoard[j] = computerAi
+        var random = newBoard[Math.floor(Math.random() * newBoard.length)]
+        var indexRandom = newBoard.indexOf(random);
+        if (indexRandom != humanPlayer && random != humanPlayer && random!= computerAi) {
+          
+          
+          newBoard[indexRandom] = computerAi;
           $('#' + random).html(computerAi)
-          break
+          break;
         }
       }
 
-      console.log(random)
+      console.log(newBoard)
+    }
+  }
+
+  /**
+   * Checking the winner
+   */
+
+  function endGame() {
+    if (winning(humanPlayer)) {
+      alert("You Win"); 
+    } else if (winning(computerAi)) {
+      alert("You Lost");
     }
   }
 })
