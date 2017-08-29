@@ -5,15 +5,17 @@
 }
 
 .wraper {
+    margin: auto !important;
     padding-right: 15px;
     padding-left: 15px;
-    margin-right: 550px;
-    margin-left: 550px;
+    /* margin-right: 0px; */
+    /* margin-left: 0px; */
     margin-top: 50px;
     background-color: white !important;
     box-shadow: 0 0 20px 0 #aaa;
     padding-bottom: 20px;
     padding-top: 20px;
+    width: 272px;
 }
 
 #gameBoard {
