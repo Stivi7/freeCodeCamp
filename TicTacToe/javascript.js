@@ -1,8 +1,29 @@
 $(document).ready(function () {
-  var board = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
-  var humanPlayer = 'X'
-  var computerAi = 'O'
-  var newBoard = []
+  var board = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
+  var defaultBoard = board.slice(0);
+  var humanPlayer = '';
+  var computerAi = '';
+  var newBoard = [];
+
+  $(".btn-lg").click(function(e) {
+    humanPlayer = e.target.innerHTML;
+    if (humanPlayer == 'X') {
+      computerAi = 'O';
+    } else {
+      computerAi = 'X';
+    }
+    $(".btn-lg").prop('disabled', 'true');
+  })
+
+  function reset() {
+    board = defaultBoard.slice(0);
+    newBoard = board.slice(0);
+    console.log('Board');
+    console.log(board)
+    $(".btn-lg").removeAttr('disabled');
+    $(".boardBox").html('');
+    humanPlayer = computerAi = '';
+  }
 
   /**
    * Defining winning moves
@@ -29,22 +50,31 @@ $(document).ready(function () {
    *Finding empty spaces on the board 
    * @param {*} board 
    */
-  function emptyIndexies (board) {
-    return board.filter(function (s) {
-      s != 'O' && s != 'X'
-    })
-  }
+  // function emptyIndexies (board) {
+  //   return board.filter(function (s) {
+  //     s != 'O' && s != 'X'
+  //   })
+  // } 
+  
   /**
    * human turn (displays X on DOM)
    * @param {*} e 
    */
   function humanTurn (e) {
-    $(e.target).html(humanPlayer)
-    boardState(e)
+    if (!humanPlayer) {
+      alert('Select token to start the game.')
+    } else {
+      if (e.target.innerHTML == humanPlayer || e.target.innerHTML == computerAi) {
+        e.target.preventDefault;
+      } else {
+        $(e.target).html(humanPlayer)
+        boardState(e)  
+      }
+    }
   }
 
   $('#gameBoard').click(humanTurn)
-
+  
   function boardState (e) {
     var i = Number(e.target.id)
     if (humanTurn) {
@@ -53,7 +83,7 @@ $(document).ready(function () {
     }
     computerTurn();
     endGame();
-   console.log(newBoard)
+   
   }
 
   /**
@@ -77,19 +107,30 @@ $(document).ready(function () {
         }
       }
 
-      console.log(newBoard)
+      //console.log(newBoard)
     }
   }
 
   /**
    * Checking the winner
    */
-
+  
   function endGame() {
     if (winning(humanPlayer)) {
-      alert("You Win"); 
+      endGameCallback(true); 
     } else if (winning(computerAi)) {
-      alert("You Lost");
-    }
+      endGameCallback(false);
+    };
+  }
+
+  function endGameCallback(win) {
+    setTimeout(function() {
+      if (win) {
+        alert('You won');
+      } else {
+        alert('You lost');
+      }
+      reset();
+    }, 0);
   }
 })
