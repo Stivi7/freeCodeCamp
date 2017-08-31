@@ -1,28 +1,28 @@
 $(document).ready(function () {
-  var board = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
-  var defaultBoard = board.slice(0);
-  var humanPlayer = '';
-  var computerAi = '';
-  var newBoard = [];
+  var board = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
+  var defaultBoard = board.slice(0)
+  var humanPlayer = ''
+  var computerAi = ''
+  var newBoard = []
 
-  $(".btn-lg").click(function(e) {
-    humanPlayer = e.target.innerHTML;
+  $('.btn-lg').click(function (e) {
+    humanPlayer = e.target.innerHTML
     if (humanPlayer == 'X') {
-      computerAi = 'O';
+      computerAi = 'O'
     } else {
-      computerAi = 'X';
+      computerAi = 'X'
     }
-    $(".btn-lg").prop('disabled', 'true');
+    $('.btn-lg').prop('disabled', 'true')
   })
 
-  function reset() {
-    board = defaultBoard.slice(0);
-    newBoard = board.slice(0);
-    console.log('Board');
-    console.log(board)
-    $(".btn-lg").removeAttr('disabled');
-    $(".boardBox").html('');
-    humanPlayer = computerAi = '';
+  function reset () {
+    board = defaultBoard.slice(0)
+    newBoard = board.slice(0)
+    //console.log('Board')
+    //console.log(board)
+    $('.btn-lg').removeAttr('disabled')
+    $('.boardBox').html('')
+    humanPlayer = computerAi = ''
   }
 
   /**
@@ -50,12 +50,12 @@ $(document).ready(function () {
    *Finding empty spaces on the board 
    * @param {*} board 
    */
-  // function emptyIndexies (board) {
-  //   return board.filter(function (s) {
-  //     s != 'O' && s != 'X'
-  //   })
-  // } 
-  
+   function emptyIndexies (board) {
+     return board.filter(function (s) {
+       s != 'O' && s != 'X'
+     })
+   } 
+
   /**
    * human turn (displays X on DOM)
    * @param {*} e 
@@ -65,25 +65,29 @@ $(document).ready(function () {
       alert('Select token to start the game.')
     } else {
       if (e.target.innerHTML == humanPlayer || e.target.innerHTML == computerAi) {
-        e.target.preventDefault;
+        e.target.preventDefault
       } else {
         $(e.target).html(humanPlayer)
-        boardState(e)  
+        boardState(e)
       }
     }
   }
 
   $('#gameBoard').click(humanTurn)
-  
+
+  /**
+   * Defining the state of the board
+   * @param {*} e 
+   */
   function boardState (e) {
     var i = Number(e.target.id)
     if (humanTurn) {
       board.splice(i, 1, humanPlayer)
       newBoard = board
     }
-    computerTurn();
-    endGame();
-   
+    computerTurn()
+    endGame()
+    
   }
 
   /**
@@ -92,45 +96,44 @@ $(document).ready(function () {
    */
 
   function computerTurn (e) {
-    //var j = Number(e.target.id)
-    
+    // var j = Number(e.target.id)
+
     if (humanTurn) {
       for (var j = 0; j < newBoard.length; j++) {
         var random = newBoard[Math.floor(Math.random() * newBoard.length)]
-        var indexRandom = newBoard.indexOf(random);
-        if (indexRandom != humanPlayer && random != humanPlayer && random!= computerAi) {
-          
-          
-          newBoard[indexRandom] = computerAi;
+        var indexRandom = newBoard.indexOf(random)
+        if (indexRandom != humanPlayer && random != humanPlayer && random != computerAi) {
+          newBoard[indexRandom] = computerAi
           $('#' + random).html(computerAi)
-          break;
+          break
         }
       }
 
-      //console.log(newBoard)
+    // console.log(newBoard)
     }
   }
 
   /**
    * Checking the winner
    */
-  
-  function endGame() {
+
+  function endGame () {
     if (winning(humanPlayer)) {
-      endGameCallback(true); 
+      endGameCallback(true)
     } else if (winning(computerAi)) {
-      endGameCallback(false);
-    };
+      endGameCallback(false)
+    }
+  }
+  function endGameCallback (win) {
+    setTimeout(function () {
+      if (win) {
+        alert('You won')
+      } else {
+        alert('You lost')
+      }
+      reset()
+    }, 0)
   }
 
-  function endGameCallback(win) {
-    setTimeout(function() {
-      if (win) {
-        alert('You won');
-      } else {
-        alert('You lost');
-      }
-      reset();
-    }, 0);
-  }
+  
 })

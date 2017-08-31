@@ -1,0 +1,39 @@
+.buttonBody {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+}
+
+.wrapper {
+    /* margin-top: 100px; */
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /* margin-right:350px;
+    margin-left:350px; */
+    margin: auto;
+}
+
+.fixer {
+    margin-top: 20px;
+}
+
+#green {
+    background: green;
+}
+
+#red {
+    background: red;
+}
+
+#yellow {
+    background: goldenrod;
+}
+
+#blue {
+    background: blue;
+}
+
+body {
+    background-color: grey !important;
+}
