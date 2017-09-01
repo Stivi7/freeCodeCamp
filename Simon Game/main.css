@@ -1,0 +1,59 @@
+.buttonBody {
+    height: 100px;
+    width: 100px;
+    border: 3px solid black;
+    opacity: 1;
+    border-radius: 100%;
+    outline: none;
+}
+
+.active {
+    opacity: 0.5;
+}
+
+.wrapper {
+    /* margin-top: 100px; */
+    box-shadow: 0 20px 30px 0px #0a4030;
+    background-color: white;
+    padding-top: 80px;
+    padding-bottom: 15px;
+    /* margin-right:350px;
+    margin-left:350px; */
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    border-radius: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border: solid 3px;
+    background: radial-gradient(circle at center, #ffffff 0, #b1b1b1 100%)
+}
+
+
+
+.fixer {
+    margin-top: 20px;
+}
+
+#green {
+    background: green;
+}
+
+#red {
+    background: red;
+}
+
+#yellow {
+    background: goldenrod;
+}
+
+#blue {
+    background: blue;
+}
+
+body {
+    background-image: url('http://www.wildtextures.com/wp-content/uploads/wildtextures_white-stained-wooden-boards.jpg')
+}
